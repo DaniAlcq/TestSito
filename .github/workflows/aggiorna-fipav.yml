@@ -1,0 +1,37 @@
+name: Aggiorna risultati FIPAV
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Esegui scraper FIPAV
+        run: node scripts/aggiorna-fipav.mjs
+
+      - name: Commit eventuali modifiche
+        run: |
+          git config user.name "ASD Volley 96 Bot"
+          git config user.email "bot@asdvolley96.it"
+          git add data.js
+          if git diff --staged --quiet; then
+            echo "Nessuna modifica da committare"
+          else
+            git commit -m "Aggiornamento automatico FIPAV"
+            git push
+          fi
