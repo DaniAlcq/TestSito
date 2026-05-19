@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASD Volley '96 — Milazzo</title>
+<link rel="icon" href="assets/logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg: #0c0b09;
+  --bg-elev: #15130f;
+  --bg-card: #1a1714;
+  --line: #2a2620;
+  --line-soft: #1f1c17;
+  --fg: #f3eee3;
+  --fg-dim: #b8b1a3;
+  --fg-mute: #6b6557;
+  --accent: #ff0097;
+  --accent-deep: #c80077;
+  --accent-soft: #ff0097cc;
+  --cream: #ebe3d0;
+  --warn: #f6c243;
+  --ok: #6dd28a;
+  --display: 'Anton', 'Arial Narrow', sans-serif;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --r: 14px;
+  --r-sm: 8px;
+  --maxw: 1440px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+
+::selection{background:var(--accent);color:#fff;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-mute);display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--accent);}
+.h-display{font-family:var(--display);font-weight:400;line-height:0.85;letter-spacing:-0.01em;text-transform:uppercase;}
+.h-serif{font-family:var(--serif);font-weight:400;font-style:italic;}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border-radius:999px;font-family:var(--sans);font-weight:500;font-size:14px;transition:transform .25s ease, background .25s ease;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{transform:translateY(-1px);background:#ff2aa6;}
+.btn-ghost{border:1px solid var(--line);color:var(--fg);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.btn .arr{display:inline-block;transform:translateX(0);transition:transform .25s ease;}
+.btn:hover .arr{transform:translateX(4px);}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(12,11,9,0.65);border-bottom:1px solid rgba(255,255,255,0.04);}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px;}
+.nav-brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.nav-brand .badge{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden;}
+.nav-brand .badge img{width:34px;height:34px;}
+.nav-brand .txt{display:flex;flex-direction:column;line-height:1;}
+.nav-brand .txt .t1{font-family:var(--display);font-size:18px;letter-spacing:0.02em;text-transform:uppercase;}
+.nav-brand .txt .t2{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--fg-mute);text-transform:uppercase;margin-top:3px;}
+.nav-links{display:flex;gap:28px;align-items:center;margin-left:24px;}
+.nav-links a{font-size:13px;color:var(--fg-dim);padding:6px 0;position:relative;transition:color .2s ease;}
+.nav-links a:hover{color:var(--fg);}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .25s ease;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{margin-left:auto;display:flex;gap:10px;align-items:center;}
+.nav-cta .live{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-dim);display:flex;align-items:center;gap:8px;}
+.nav-cta .live .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,0,151,.5);}70%{box-shadow:0 0 0 8px rgba(255,0,151,0);}100%{box-shadow:0 0 0 0 rgba(255,0,151,0);}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:140px 0 80px;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:end;}
+.hero-meta{display:flex;flex-direction:column;gap:20px;font-family:var(--mono);font-size:11px;color:var(--fg-mute);letter-spacing:0.15em;text-transform:uppercase;}
+.hero-meta .row{display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line-soft);}
+.hero-meta .row span:last-child{color:var(--fg);}
+.hero-title{margin-top:30px;position:relative;}
+.hero-title h1{font-family:var(--display);font-size:clamp(80px, 16vw, 260px);line-height:0.82;text-transform:uppercase;letter-spacing:-0.015em;}
+.hero-title h1 .line1{display:block;color:var(--fg);}
+.hero-title h1 .line2{display:block;color:var(--fg);position:relative;}
+.hero-title h1 .line2 .it{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent);text-transform:lowercase;letter-spacing:-0.02em;font-size:0.78em;vertical-align:0.06em;padding:0 0.08em;}
+
+.hero-side{display:flex;flex-direction:column;gap:24px;align-self:end;padding-bottom:8px;}
+.hero-logo{width:180px;height:180px;align-self:end;}
+.hero-logo img{width:100%;height:100%;filter:drop-shadow(0 12px 40px rgba(255,0,151,0.25));}
+.hero-desc{font-size:15px;line-height:1.5;color:var(--fg-dim);max-width:340px;align-self:end;text-align:right;}
+.hero-desc strong{color:var(--fg);font-weight:500;}
+
+.hero-foot{margin-top:60px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px;align-items:end;padding-top:30px;border-top:1px solid var(--line-soft);}
+.hero-foot .actions{display:flex;gap:10px;flex-wrap:wrap;}
+.hero-foot .stat{display:flex;flex-direction:column;gap:6px;}
+.hero-foot .stat .n{font-family:var(--display);font-size:54px;line-height:0.9;color:var(--fg);}
+.hero-foot .stat .n .small{font-size:0.5em;color:var(--accent);vertical-align:0.25em;}
+.hero-foot .stat .l{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-mute);}
+
+.marquee{margin-top:80px;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:18px 0;overflow:hidden;mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 38s linear infinite;}
+.marquee-track span{font-family:var(--display);font-size:34px;text-transform:uppercase;letter-spacing:0.02em;color:var(--fg);display:inline-flex;align-items:center;gap:48px;}
+.marquee-track span::after{content:"●";color:var(--accent);font-size:18px;}
+@keyframes marquee{to{transform:translateX(-50%);}}
+
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.025) 1px, transparent 1px);background-size:calc(100%/12) 100%;pointer-events:none;z-index:0;}
+.hero > .wrap{position:relative;z-index:1;}
+.hero::before{content:"";position:absolute;top:20%;right:-200px;width:600px;height:600px;background:radial-gradient(circle, rgba(255,0,151,0.18), transparent 70%);pointer-events:none;}
+
+/* ============ SECTION SHELL ============ */
+section{padding:100px 0;position:relative;}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-bottom:48px;}
+.sec-head h2{font-family:var(--display);font-size:clamp(48px,7vw,96px);line-height:0.9;text-transform:uppercase;letter-spacing:-0.01em;}
+.sec-head h2 .it{font-family:var(--serif);font-style:italic;color:var(--accent);text-transform:lowercase;font-weight:400;letter-spacing:-0.02em;}
+.sec-head .meta{display:flex;flex-direction:column;gap:8px;align-items:flex-end;font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);text-align:right;}
+.sec-head .meta a{color:var(--fg);border-bottom:1px solid var(--accent);padding-bottom:2px;}
+
+/* ============ SQUADRE ============ */
+.teams-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;}
+.team{position:relative;background:var(--bg-card);border:1px solid var(--line-soft);border-radius:var(--r);padding:24px;transition:border-color .3s ease, transform .3s ease;cursor:pointer;overflow:hidden;}
+.team:hover{border-color:var(--accent);transform:translateY(-3px);}
+.team .num{font-family:var(--display);font-size:24px;color:var(--fg-mute);position:absolute;top:18px;right:22px;}
+.team .img{aspect-ratio:4/3;border-radius:var(--r-sm);background:var(--bg-elev);margin-bottom:18px;position:relative;overflow:hidden;background-image:repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 8px, transparent 8px 16px);}
+.team .img::after{content:attr(data-cat);position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);}
+.team .img .badge-cat{position:absolute;top:10px;left:12px;font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;background:var(--accent);color:#fff;padding:4px 8px;border-radius:4px;z-index:2;}
+.team .img .badge-cat.f{background:var(--accent);}
+.team .img[style*="background-image:url"]::before{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);}
+.team h3{font-family:var(--display);font-size:30px;text-transform:uppercase;letter-spacing:-0.005em;line-height:0.95;}
+.team h3 .it{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent);text-transform:lowercase;font-size:0.85em;}
+.team .sub{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);margin-top:8px;}
+.team .roster{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--fg-dim);}
+.team .roster .athletes{display:flex;}
+.team .roster .athletes div{width:18px;height:18px;border-radius:50%;background:var(--bg-elev);border:2px solid var(--bg-card);margin-left:-6px;background-image:repeating-linear-gradient(45deg, var(--bg-elev) 0 3px, var(--line) 3px 6px);}
+.team .roster .athletes div:first-child{margin-left:0;}
+.team.big{grid-column:span 6;}
+.team.med{grid-column:span 4;}
+.team.sm{grid-column:span 3;}
+
+/* ============ RESULTS + CALENDAR ============ */
+.split{display:grid;grid-template-columns:1.35fr 1fr;gap:24px;}
+.panel{background:var(--bg-card);border:1px solid var(--line-soft);border-radius:var(--r);padding:30px;}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+.panel-head .t{font-family:var(--display);font-size:28px;text-transform:uppercase;letter-spacing:-0.005em;}
+.panel-head .l{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);}
+
+.result{display:grid;grid-template-columns:60px 1fr auto 1fr 60px;gap:16px;align-items:center;padding:18px 4px;border-bottom:1px solid var(--line-soft);}
+.result:last-child{border-bottom:none;}
+.result .date{font-family:var(--mono);font-size:11px;color:var(--fg-mute);line-height:1.3;}
+.result .date .d{display:block;color:var(--fg);font-size:14px;}
+.result .team-a, .result .team-b{display:flex;align-items:center;gap:10px;}
+.result .team-b{flex-direction:row-reverse;text-align:right;}
+.result .team-name{font-family:var(--display);font-size:18px;text-transform:uppercase;line-height:1;letter-spacing:0.005em;}
+.result .team-name.us{color:var(--accent);}
+.result .team-name .league{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.15em;color:var(--fg-mute);margin-top:4px;}
+.result .crest{width:32px;height:32px;border-radius:50%;background:var(--bg-elev);display:grid;place-items:center;font-family:var(--display);font-size:13px;color:var(--fg-dim);flex-shrink:0;border:1px solid var(--line);}
+.result .crest.us{background:#fff;color:var(--accent);}
+.result .score{font-family:var(--display);font-size:36px;line-height:1;letter-spacing:0.02em;text-align:center;}
+.result .score .sep{color:var(--fg-mute);font-size:0.7em;padding:0 6px;}
+.result .score.win .home, .result .score.loss .away{color:var(--fg);}
+.result .score.win .away, .result .score.loss .home{color:var(--fg-mute);}
+.result .score.win .home{color:var(--accent);}
+.result .badge-r{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px;}
+.result .badge-r.w{background:rgba(109,210,138,0.15);color:var(--ok);}
+.result .badge-r.l{background:rgba(255,255,255,0.05);color:var(--fg-mute);}
+
+.cal{display:flex;flex-direction:column;}
+.cal-item{display:grid;grid-template-columns:64px 1fr auto;gap:16px;padding:18px 4px;border-bottom:1px solid var(--line-soft);align-items:center;transition:background .2s;}
+.cal-item:hover{background:rgba(255,255,255,0.015);}
+.cal-item:last-child{border-bottom:none;}
+.cal-item .when{text-align:center;border-right:1px solid var(--line-soft);padding-right:14px;}
+.cal-item .when .day{font-family:var(--display);font-size:34px;color:var(--fg);line-height:1;}
+.cal-item .when .month{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-mute);margin-top:4px;}
+.cal-item .when .time{display:block;font-family:var(--mono);font-size:11px;color:var(--accent);margin-top:6px;}
+.cal-item .match{display:flex;flex-direction:column;gap:4px;}
+.cal-item .match .vs{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:0.005em;}
+.cal-item .match .vs .accent{color:var(--accent);}
+.cal-item .match .where{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg-mute);}
+.cal-item .where-chip{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:4px 8px;border-radius:3px;background:var(--bg-elev);color:var(--fg-dim);}
+.cal-item .where-chip.home{background:rgba(255,0,151,0.12);color:var(--accent);}
+
+/* ============ CLASSIFICA ============ */
+.standings{background:var(--bg-card);border:1px solid var(--line-soft);border-radius:var(--r);padding:30px;}
+.standings-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;gap:16px;flex-wrap:wrap;}
+.standings-head .t{font-family:var(--display);font-size:32px;text-transform:uppercase;}
+.standings-head .switcher{display:flex;gap:4px;background:var(--bg-elev);padding:4px;border-radius:999px;}
+.standings-head .switcher button{padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);border-radius:999px;}
+.standings-head .switcher button.active{background:var(--accent);color:#fff;}
+.standings table{width:100%;border-collapse:collapse;}
+.standings th{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);text-align:right;padding:10px 8px;font-weight:400;border-bottom:1px solid var(--line);}
+.standings th:nth-child(1), .standings th:nth-child(2){text-align:left;}
+.standings td{padding:14px 8px;border-bottom:1px solid var(--line-soft);font-family:var(--sans);font-size:14px;color:var(--fg);text-align:right;}
+.standings td:nth-child(1), .standings td:nth-child(2){text-align:left;}
+.standings td:nth-child(1){font-family:var(--display);font-size:18px;color:var(--fg-mute);width:40px;}
+.standings td:nth-child(2){font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:0.005em;}
+.standings tr.us td:nth-child(1){color:var(--accent);}
+.standings tr.us td:nth-child(2){color:var(--accent);}
+.standings tr.us{background:rgba(255,0,151,0.04);}
+.standings td.pts{font-family:var(--display);font-size:20px;color:var(--fg);}
+.standings tr.us td.pts{color:var(--accent);}
+.standings .form{display:inline-flex;gap:3px;}
+.standings .form span{width:18px;height:18px;border-radius:3px;display:inline-grid;place-items:center;font-family:var(--mono);font-size:9px;color:#fff;}
+.standings .form .w{background:var(--ok);color:#0c0b09;}
+.standings .form .l{background:#3a3631;color:var(--fg-dim);}
+.standings .form .d{background:var(--warn);color:#0c0b09;}
+
+/* ============ NEWS ============ */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.news-card{background:var(--bg-card);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden;transition:border-color .3s ease, transform .3s ease;cursor:pointer;display:flex;flex-direction:column;}
+.news-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.news-card .news-img{aspect-ratio:16/10;background:var(--bg-elev);background-image:repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 8px, transparent 8px 16px);}
+.news-card .news-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1;}
+.news-card .news-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);}
+.news-card .news-meta span:first-child{color:var(--accent);}
+.news-card h3{font-family:var(--display);font-size:24px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.05;color:var(--fg);}
+.news-card p{font-size:14px;line-height:1.55;color:var(--fg-dim);flex:1;}
+.news-card .news-link{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg);padding-top:8px;border-top:1px solid var(--line-soft);display:inline-flex;align-items:center;gap:8px;transition:color .2s;}
+.news-card:hover .news-link{color:var(--accent);}
+.news-card .news-link .arr{transition:transform .25s ease;}
+.news-card:hover .news-link .arr{transform:translateX(4px);}
+
+/* ============ SOCIETÀ ============ */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about .lead{font-family:var(--serif);font-size:34px;line-height:1.2;color:var(--fg);max-width:600px;}
+.about .lead em{font-style:italic;color:var(--accent);}
+.about .body{font-size:15px;line-height:1.65;color:var(--fg-dim);display:flex;flex-direction:column;gap:16px;}
+.about .body p::first-letter{color:var(--accent);}
+.values{margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.value{padding:32px 0 0;border-top:1px solid var(--line);}
+.value .n{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;color:var(--accent);margin-bottom:18px;}
+.value .t{font-family:var(--display);font-size:28px;text-transform:uppercase;line-height:0.95;margin-bottom:14px;}
+.value .d{font-size:13px;line-height:1.5;color:var(--fg-dim);}
+
+/* ============ SPONSOR ============ */
+.sponsors{background:var(--bg-elev);}
+.sponsor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden;}
+.sponsor{background:var(--bg-card);aspect-ratio:2.2/1;display:grid;place-items:center;padding:32px;text-align:center;position:relative;transition:background .3s;}
+.sponsor:hover{background:#1f1c17;}
+.sponsor .name{font-family:var(--display);font-size:26px;text-transform:uppercase;letter-spacing:-0.005em;color:var(--fg);}
+.sponsor .name .small{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--fg-mute);display:block;margin-top:6px;text-transform:uppercase;font-weight:400;}
+.sponsor .tier{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-mute);}
+
+/* ============ FOOTER ============ */
+footer{background:#08070a;padding:90px 0 30px;border-top:1px solid var(--line-soft);}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;}
+.foot-brand{display:flex;flex-direction:column;gap:18px;}
+.foot-brand .row{display:flex;align-items:center;gap:14px;}
+.foot-brand .row .b{width:54px;height:54px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden;}
+.foot-brand .row .b img{width:48px;height:48px;}
+.foot-brand h4{font-family:var(--display);font-size:28px;text-transform:uppercase;letter-spacing:0.01em;line-height:1;}
+.foot-brand h4 span{display:block;font-family:var(--mono);font-size:10px;color:var(--fg-mute);margin-top:6px;letter-spacing:0.18em;}
+.foot-brand p{color:var(--fg-dim);font-size:13px;line-height:1.55;max-width:340px;}
+.foot-col h5{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:18px;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.foot-col ul li a{font-size:14px;color:var(--fg-dim);transition:color .2s;}
+.foot-col ul li a:hover{color:var(--accent);}
+.foot-col .addr{font-size:13px;line-height:1.55;color:var(--fg-dim);}
+.foot-col .addr strong{color:var(--fg);font-weight:500;display:block;margin-bottom:4px;font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:0.005em;}
+.foot-bottom{margin-top:80px;padding-top:24px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);}
+.foot-bottom .socials{display:flex;gap:18px;}
+.foot-bottom .socials a:hover{color:var(--accent);}
+.wordmark{font-family:var(--display);font-size:clamp(90px,18vw,260px);line-height:0.85;text-transform:uppercase;letter-spacing:-0.02em;color:transparent;-webkit-text-stroke:1px var(--line);text-align:center;margin-top:60px;user-select:none;}
+.wordmark .it{font-family:var(--serif);font-style:italic;color:transparent;-webkit-text-stroke:1px var(--accent);font-weight:400;}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ============ ADMIN PANEL ============ */
+#admin-panel{position:fixed;inset:0;z-index:100;background:rgba(8,7,10,0.92);backdrop-filter:blur(8px);display:flex;align-items:stretch;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:24px;}
+#admin-panel.open{opacity:1;pointer-events:auto;}
+.ap-shell{background:var(--bg-card);border:1px solid var(--line);border-radius:18px;max-width:1100px;width:100%;display:flex;flex-direction:column;overflow:hidden;max-height:100%;}
+.ap-head{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;border-bottom:1px solid var(--line-soft);gap:16px;flex-wrap:wrap;}
+.ap-head h2{font-family:var(--display);font-size:24px;text-transform:uppercase;letter-spacing:0.01em;}
+.ap-head .ap-sub{font-size:12px;color:var(--fg-dim);margin-top:4px;max-width:560px;line-height:1.4;}
+.ap-head .ap-sub code{background:var(--bg-elev);padding:2px 6px;border-radius:3px;font-family:var(--mono);font-size:11px;}
+.ap-head-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.ap-btn{padding:10px 16px;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;transition:transform .15s, background .15s, opacity .15s;display:inline-flex;align-items:center;gap:6px;}
+.ap-btn-primary{background:var(--accent);color:#fff;}
+.ap-btn-primary:hover{background:#ff2aa6;}
+.ap-btn-ghost{background:var(--bg-elev);color:var(--fg);border:1px solid var(--line);}
+.ap-btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.ap-btn-add{margin-top:14px;padding:14px;width:100%;background:transparent;border:1px dashed var(--line);color:var(--fg-mute);border-radius:8px;font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.ap-btn-add:hover{border-color:var(--accent);color:var(--accent);}
+.ap-btn[disabled]{opacity:0.5;cursor:wait;}
+.ap-tabs{display:flex;gap:2px;padding:0 28px;border-bottom:1px solid var(--line-soft);overflow-x:auto;}
+.ap-tab{padding:14px 16px;font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .2s, border-color .2s;}
+.ap-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.ap-tab:hover:not(.active){color:var(--fg);}
+.ap-body{padding:24px 28px;overflow-y:auto;flex:1;}
+.ap-list{display:flex;flex-direction:column;gap:16px;}
+.ap-item{background:var(--bg-elev);border:1px solid var(--line-soft);border-radius:10px;padding:18px;}
+.ap-item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line-soft);}
+.ap-item-head strong{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:0.005em;color:var(--fg);}
+.ap-item-actions{display:flex;gap:4px;}
+.ap-mini{width:30px;height:30px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);font-size:13px;cursor:pointer;transition:all .15s;}
+.ap-mini:hover{background:var(--accent);color:#fff;}
+.ap-mini-danger:hover{background:#c0392b;color:#fff;}
+.ap-fields{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 16px;}
+.ap-f{display:flex;flex-direction:column;gap:4px;}
+.ap-f .ap-fl{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg-mute);}
+.ap-f input[type="text"], .ap-f input[type="number"], .ap-f input[type="date"], .ap-f select, .ap-f textarea{
+  background:var(--bg-card);border:1px solid var(--line);color:var(--fg);
+  padding:9px 10px;border-radius:6px;font-family:var(--sans);font-size:13px;width:100%;
+}
+.ap-f input:focus, .ap-f select:focus, .ap-f textarea:focus{outline:none;border-color:var(--accent);}
+.ap-f input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent);align-self:flex-start;}
+.ap-img-prev{margin-top:8px;width:100%;height:80px;border-radius:6px;background:var(--bg-card) center/cover no-repeat;border:1px solid var(--line);position:relative;}
+.ap-img-prev.empty::after{content:"Nessuna foto";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:var(--fg-mute);letter-spacing:0.12em;text-transform:uppercase;}
+
+.ap-classifica-table{margin-top:14px;font-family:var(--mono);font-size:11px;}
+.ap-classifica-table .ap-row{display:grid;grid-template-columns:40px 1fr 40px 40px 40px 50px 50px 50px 90px 50px 30px;gap:6px;padding:6px 0;align-items:center;border-bottom:1px solid var(--line-soft);}
+.ap-classifica-table .ap-head-row{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg-mute);font-weight:normal;padding-bottom:8px;}
+.ap-classifica-table input{background:var(--bg-card);border:1px solid var(--line);color:var(--fg);padding:6px 8px;border-radius:4px;font-family:var(--sans);font-size:12px;width:100%;}
+.ap-classifica-table input.s{text-align:center;}
+.ap-classifica-table input.m{text-align:center;}
+
+/* Pulsante "admin" sempre disponibile via #admin */
+.admin-bubble{position:fixed;bottom:18px;right:18px;width:42px;height:42px;border-radius:50%;background:var(--bg-card);border:1px solid var(--line);color:var(--fg-mute);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:90;font-size:18px;transition:all .2s;}
+.admin-bubble:hover{border-color:var(--accent);color:var(--accent);}
+body.admin-ok .admin-bubble{display:flex;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1100px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-side{align-self:start;align-items:flex-start;}
+  .hero-logo{align-self:flex-start;width:120px;height:120px;}
+  .hero-desc{text-align:left;}
+  .hero-foot{grid-template-columns:repeat(2,1fr);}
+  .team.big,.team.med,.team.sm{grid-column:span 6;}
+  .split{grid-template-columns:1fr;}
+  .about{grid-template-columns:1fr;gap:40px;}
+  .values{grid-template-columns:repeat(2,1fr);}
+  .news-grid{grid-template-columns:repeat(2,1fr);}
+  .sponsor-grid{grid-template-columns:repeat(2,1fr);}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .ap-fields{grid-template-columns:1fr;}
+}
+@media (max-width:600px){
+  .wrap{padding:0 20px;}
+  .hero{padding:110px 0 60px;}
+  section{padding:64px 0;}
+  .sec-head{grid-template-columns:1fr;}
+  .sec-head .meta{align-items:flex-start;text-align:left;}
+  .team.big,.team.med,.team.sm{grid-column:span 12;}
+  .values{grid-template-columns:1fr;}
+  .news-grid{grid-template-columns:1fr;}
+  .sponsor-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .result{grid-template-columns:50px 1fr auto;}
+  .result .team-b, .result .badge-r{display:none;}
+  .hero-foot{grid-template-columns:1fr;}
+  .nav-cta .live{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <div class="badge"><img src="assets/logo.svg" alt="logo" style="object-fit: cover; width: 3px; height: 4px; opacity: 1"></div>
+      <div class="txt">
+        <span class="t1" data-bind="brandName">ASD Volley '96</span>
+        <span class="t2" data-bind="brandLine">Milazzo · dal 1996</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#squadre">Squadre</a>
+      <a href="#risultati">Risultati</a>
+      <a href="#classifica">Classifica</a>
+      <a href="#news">News</a>
+      <a href="#societa">Società</a>
+      <a href="#sponsor">Sponsor</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+    <div class="nav-cta">
+      <span class="live"><span class="dot"></span><span data-bind="stagione">Stagione 25/26</span></span>
+      <a href="#contatti" class="btn btn-primary">Tesseramenti <span class="arr">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+  <div class="bg-grid"></div>
+  <div class="wrap">
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-meta" id="hero-meta"></div>
+        <div class="hero-title" id="hero-title"></div>
+      </div>
+      <div class="hero-side">
+        <div class="hero-logo"><img src="assets/logo.svg" alt="Logo ASD Volley '96"></div>
+        <p class="hero-desc">
+          <strong>Pallavolo, scuola e comunità.</strong>
+          Dal 1996 cresciamo atlete e atleti tra le mura del Palamilone, dalle prime palleggiate del minivolley fino alla Serie C.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <div class="actions">
+        <a href="#squadre" class="btn btn-primary">Le nostre squadre <span class="arr">→</span></a>
+        <a href="#contatti" class="btn btn-ghost">Vieni in palestra <span class="arr">→</span></a>
+      </div>
+      <div id="hero-stats" style="display:contents;"></div>
+    </div>
+
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Serie C Femminile</span><span>Serie C Maschile</span><span>Under 17 M</span><span>Under 15 M</span><span>Under 14 F</span><span>1ª Divisione M</span><span>S3 Spike Ball</span><span>Libera Mista</span>
+      <span>Serie C Femminile</span><span>Serie C Maschile</span><span>Under 17 M</span><span>Under 15 M</span><span>Under 14 F</span><span>1ª Divisione M</span><span>S3 Spike Ball</span><span>Libera Mista</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SQUADRE ========== -->
+<section id="squadre">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Le nostre <span class="it">squadre</span></h2>
+      <div class="meta"><span>01 / Stagione 25/26</span><a href="#squadre">Vedi tutto →</a></div>
+    </div>
+    <div class="teams-grid reveal" id="teams-grid"></div>
+  </div>
+</section>
+
+<!-- ========== RISULTATI + CALENDARIO ========== -->
+<section id="risultati">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Risultati &<br><span class="it">prossime sfide</span></h2>
+      <div class="meta"><span>02 / Dati FIPAV Sicilia</span><a href="https://www.fipavsicilia.it/risultati/" target="_blank">Fonte →</a></div>
+    </div>
+    <div class="split">
+      <div class="panel reveal">
+        <div class="panel-head"><span class="t">Ultimi risultati</span><span class="l">Aggiornato di recente</span></div>
+        <div id="risultati-list"></div>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-head"><span class="t">Prossime sfide</span><span class="l">Calendario</span></div>
+        <div class="cal" id="cal-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLASSIFICA ========== -->
+<section id="classifica">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Classifica<br><span class="it">in vetta</span></h2>
+      <div class="meta"><span>03 / Sicilia girone unico</span><a href="https://www.fipavsicilia.it/risultati/" target="_blank">Classifiche complete →</a></div>
+    </div>
+    <div class="standings reveal">
+      <div class="standings-head">
+        <span class="t" id="standings-title">Serie C — Femminile</span>
+        <div class="switcher" id="standings-switcher"></div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Squadra</th><th>G</th><th>V</th><th>P</th><th>SF</th><th>SS</th><th>Forma</th><th>PT</th></tr>
+        </thead>
+        <tbody id="standings-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NEWS ========== -->
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Ultime <span class="it">news</span></h2>
+      <div class="meta"><span>04 / Dalla società</span><a href="#news">Archivio →</a></div>
+    </div>
+    <div class="news-grid reveal" id="news-grid"></div>
+  </div>
+</section>
+
+<!-- ========== SOCIETÀ ========== -->
+<section id="societa">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>La <span class="it">società</span></h2>
+      <div class="meta"><span>05 / Chi siamo</span><a href="#contatti">Contattaci →</a></div>
+    </div>
+    <div class="about reveal">
+      <p class="lead">
+        Nata nel <em>1996</em> a Milazzo, l'ASD Volley '96 è il punto di riferimento della pallavolo nel comprensorio della <em>Riviera tirrenica</em>. Trent'anni passati a costruire una scuola, una squadra, una <em>famiglia</em>.
+      </p>
+      <div class="body">
+        <p>Abbiamo iniziato con un canestro e una rete in una palestra del centro. Oggi siamo otto squadre, oltre 180 tesserati, due tecnici federali e un'idea: la pallavolo che cresce le persone prima delle atlete.</p>
+        <p>Crediamo in un settore giovanile sano, nella formazione continua dei nostri allenatori, in un rapporto trasparente con le famiglie. Il campionato è la conseguenza, non l'obiettivo. L'obiettivo è restare in palestra a vita.</p>
+      </div>
+    </div>
+    <div class="values reveal" id="values"></div>
+  </div>
+</section>
+
+<!-- ========== SPONSOR ========== -->
+<section id="sponsor" class="sponsors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>I nostri <span class="it">partner</span></h2>
+      <div class="meta"><span>06 / Sponsor</span><a href="#contatti">Diventa partner →</a></div>
+    </div>
+    <div class="sponsor-grid reveal" id="sponsor-grid"></div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer id="contatti">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="row">
+          <div class="b"><img src="assets/logo.svg" alt="logo"></div>
+          <h4 data-bind="brandName">ASD Volley '96<span data-bind="brandLine">Milazzo · 1996—2026</span></h4>
+        </div>
+        <p>Associazione Sportiva Dilettantistica affiliata FIPAV. Promuoviamo la pallavolo nel comprensorio di Milazzo dal 1996.</p>
+        <a href="#" class="btn btn-primary" style="align-self:flex-start;margin-top:8px;">Iscrivi tuo/a figlio/a <span class="arr">→</span></a>
+      </div>
+      <div class="foot-col">
+        <h5>Sede</h5>
+        <div class="addr" id="foot-addr"></div>
+      </div>
+      <div class="foot-col">
+        <h5>Contatti</h5>
+        <ul id="foot-contacts"></ul>
+      </div>
+      <div class="foot-col">
+        <h5>Naviga</h5>
+        <ul>
+          <li><a href="#squadre">Squadre</a></li>
+          <li><a href="#risultati">Risultati e calendario</a></li>
+          <li><a href="#classifica">Classifiche</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#societa">La società</a></li>
+          <li><a href="#sponsor">Sponsor e partner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wordmark">VOLLEY <span class="it">novantasei</span></div>
+    <div class="foot-bottom">
+      <span id="foot-piva">© ASD Volley '96</span>
+      <div class="socials" id="foot-socials"></div>
+      <span>Made with passione a Milazzo · <a href="#admin" style="color:inherit;border-bottom:1px dotted var(--fg-mute);">admin</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="admin-bubble" onclick="window.openAdmin()" title="Pannello admin">⚙</button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
+
