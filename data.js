@@ -43,7 +43,7 @@ window.SITE_DATA = {
 
     // URL repo GitHub (es. "asdvolley96/sito"). Lascia vuoto se non usi GitHub.
     // Serve al pulsante "Aggiorna FIPAV" dell'admin per aprire la pagina Actions.
-    githubRepo: "asdvolley96/sito",
+    githubRepo: "DaniAlcq/TestSito",
 
     // Password admin (cambiala!)
     adminPassword: "volley96"
