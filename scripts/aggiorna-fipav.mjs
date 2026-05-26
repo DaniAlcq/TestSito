@@ -17,22 +17,26 @@ import * as cheerio from 'cheerio';
 
 // ============ CONFIGURAZIONE ============
 
-const FIPAV_URL    = 'https://sicilia.portalefipav.net/risultati-classifiche.aspx?PId=7306';
-const DATA_FILE    = 'data.js';
+// URL portale FIPAV Sicilia. PId=7306 è la pagina pubblica.
+// Il valore StId (stagione) viene letto automaticamente — non serve aggiornarlo a stagione nuova.
+const FIPAV_BASE_URL = 'https://sicilia.portalefipav.net/risultati-classifiche.aspx?PId=7306';
 
-// Lista di pattern (case-insensitive) per riconoscere la società sul portale FIPAV.
-// Lo script trova un match se UNO QUALSIASI di questi pattern compare nel nome squadra.
-// Aggiungere/rimuovere pattern qui se cambiano gli sponsor.
+// SId della società sul portale FIPAV. Trovato cercando "VOLLEY 96" nel dropdown Società.
+// Se cambia il nome della società, vai sul portale, ispeziona il dropdown, prendi il nuovo SId.
+const SOCIETA_SID = '2225';   // A.S. VOLLEY 96
+
+const DATA_FILE = 'data.js';
+
+// Pattern (case-insensitive, ignorano punteggiatura) per riconoscere la nostra società
+// sui nomi squadra. Lo script include un match se UNO QUALSIASI di questi pattern compare.
 const PATTERNS_SOCIETA = [
-  'VOLLEY 96',                       // forma generica
-  "VOLLEY '96",                      // con apostrofo
-  'FIMA FORMAZIONE',                 // Serie C Femminile
-  'ADG NDT',                         // Serie C Maschile
-  'ADG NDT SOLUTIONS'
+  'VOLLEY 96',           // forma generica
+  "VOLLEY '96",          // con apostrofo
+  'FIMA FORMAZIONE',     // femminile (anche se sul portale è "FI.MA. FORMAZIONE")
+  'ADG NDT',             // maschile (sponsor)
+  'ADG NDT SOLUTIONS',
+  'A.S. VOLLEY 96'       // nome ufficiale società FIPAV
 ];
-
-// Pattern principale (compare nel nome "ASD Volley '96" della classifica)
-const NOME_SOCIETA_DISPLAY = 'VOLLEY 96';
 
 // ============ UTILITY ============
 
@@ -68,13 +72,28 @@ function siglaDaNome(nome) {
   return cleaned.slice(0, 2).toUpperCase();
 }
 
-// Match case-insensitive con normalizzazione (apostrofi/spazi)
+// Match case-insensitive con normalizzazione (apostrofi, puntini, spazi)
 function normalizza(s) {
-  return (s || '').toUpperCase().replace(/['']/g, '').replace(/\s+/g, ' ').trim();
+  return (s || '')
+    .toUpperCase()
+    .replace(/['']/g, '')
+    .replace(/\./g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 function isNostraSocieta(nome) {
   const n = normalizza(nome);
   return PATTERNS_SOCIETA.some(p => n.includes(normalizza(p)));
+}
+
+// Legge dinamicamente lo StId della stagione corrente dal dropdown FIPAV
+async function trovaStagioneCorrente() {
+  const html = await fetchHTML(FIPAV_BASE_URL);
+  const m = html.match(/<select[^>]*name=["']StId["'][^>]*>([\s\S]*?)<\/select>/i);
+  if (!m) return null;
+  // prima option = stagione più recente
+  const opt = m[1].match(/<option[^>]*value=["'](\d+)["'][^>]*>([^<]*)<\/option>/i);
+  return opt ? { id: opt[1], nome: opt[2].trim() } : null;
 }
 
 function abbreviaCategoria(t) {
@@ -126,31 +145,71 @@ function parsePagina(html) {
   const calendario = [];
   const classificheCId = {};
 
-  $('table').each((_, table) => {
-    const $t = $(table);
-    const headerText = $t.find('tr').first().text().toLowerCase();
-    if (!/squadra casa/.test(headerText) || !/ospit/.test(headerText)) return;
+  // ===== STEP 1: Trova tutti i "marker" nell'HTML in ordine =====
+  // Un marker è un titolo campionato O una tabella di match.
+  // Per ogni tabella applichiamo l'ultimo titolo trovato prima.
 
-    // Trova titolo campionato nei nodi precedenti
-    let titolo = '';
-    let prev = $t[0].previousSibling;
-    while (prev && !titolo) {
-      const txt = $(prev).text ? clean($(prev).text()) : '';
-      if (txt && txt.length > 5 && txt.length < 200) titolo = txt;
-      prev = prev.previousSibling;
-    }
+  // Regex per i titoli campionato (devono coprire i casi noti del portale FIPAV)
+  const titoloRegex = /\b((?:SERIE\s+[A-Z]+\s+(?:FEMMINILE|MASCHILE)(?:\s*-\s*[^<\n]{1,150})?)|(?:PLAY-OFF\s+[A-Z\d]+[^<\n]{1,150})|(?:UNDER\s+\d+\s+[A-Z]+[^<\n]{1,150})|(?:COPPA\s+SICILIA[^<\n]{1,150})|(?:FINAL\s+(?:FOUR|SIX)[^<\n]{1,150})|(?:TROFEO\s+DEI\s+TERRITORI[^<\n]{1,150}))/gi;
 
-    // Link "classifica" nei nodi precedenti
-    const scan = $t.prevAll().slice(0, 5);
-    scan.find('a[href*="classifica.aspx"]').each((__, a) => {
-      const href = $(a).attr('href') || '';
-      const m = href.match(/CId=(\d+)/);
-      if (m && titolo) classificheCId[titolo] = m[1];
-    });
+  const markers = [];
 
-    $t.find('tr').each((idx, tr) => {
-      if (idx === 0) return;
-      const tds = $(tr).find('td').map((__, td) => clean($(td).text())).get();
+  // 1a. Trova i titoli campionato (deduplicati per posizione)
+  let m;
+  const titoliVisti = new Set();
+  while ((m = titoloRegex.exec(html))) {
+    const titolo = clean(m[1]).replace(/[\s\-]+$/, '');
+    if (titolo.length < 8) continue;
+    // Evita duplicati ravvicinati (la stessa stringa entro 200 char)
+    const key = m.index + '|' + titolo;
+    if (titoliVisti.has(key)) continue;
+    titoliVisti.add(key);
+    markers.push({ pos: m.index, type: 'titolo', value: titolo });
+  }
+
+  // 1b. Trova le tabelle match (header "Squadra casa")
+  const tableMatches = [];
+  const tableRegex = /Squadra\s+casa/gi;
+  while ((m = tableRegex.exec(html))) {
+    // Risali alla <table> contenitore: prendi la posizione del precedente "<table"
+    const before = html.slice(0, m.index);
+    const tableStart = before.lastIndexOf('<table');
+    if (tableStart === -1) continue;
+    // Trova il "</table>" successivo
+    const tableEnd = html.indexOf('</table>', m.index);
+    if (tableEnd === -1) continue;
+    if (tableMatches.some(t => t.start === tableStart)) continue;
+    tableMatches.push({ start: tableStart, end: tableEnd + '</table>'.length, headerPos: m.index });
+  }
+
+  // 1c. Trova link a classifica.aspx?CId=... con posizione
+  const clsRegex = /classifica\.aspx\?CId=(\d+)/gi;
+  const clsLinks = [];
+  while ((m = clsRegex.exec(html))) {
+    clsLinks.push({ pos: m.index, cid: m[1] });
+  }
+
+  // ===== STEP 2: Per ogni tabella, trova l'ultimo titolo precedente =====
+  for (const t of tableMatches) {
+    const titoloPrec = markers
+      .filter(mk => mk.type === 'titolo' && mk.pos < t.headerPos)
+      .sort((a, b) => b.pos - a.pos)[0];
+    const titolo = titoloPrec ? titoloPrec.value : 'Campionato';
+
+    // Link classifica più vicino (entro 300 char prima del titolo, o dopo)
+    const refPos = titoloPrec ? titoloPrec.pos : t.start;
+    const cls = clsLinks
+      .filter(c => Math.abs(c.pos - refPos) < 1500)
+      .sort((a, b) => Math.abs(a.pos - refPos) - Math.abs(b.pos - refPos))[0];
+    if (cls && titolo) classificheCId[titolo] = cls.cid;
+
+    // Estrai HTML della tabella e parsala con cheerio
+    const tableHtml = html.slice(t.start, t.end);
+    const $t = cheerio.load(tableHtml);
+
+    $t('tr').each((idx, tr) => {
+      if (idx === 0) return; // header
+      const tds = $t(tr).find('td').map((__, td) => clean($t(td).text())).get();
       if (tds.length < 6) return;
 
       const dataOra = tds[2] || '';
@@ -165,7 +224,7 @@ function parsePagina(html) {
       const isOsp  = isNostraSocieta(ospite);
       if (!isCasa && !isOsp) return;
 
-      const categoria = titolo || 'Campionato';
+      const categoria = titolo;
       const sm = risult.match(/(\d)\s*[-/]\s*(\d)/);
       if (sm) {
         const home = parseInt(sm[1]), away = parseInt(sm[2]);
@@ -189,7 +248,7 @@ function parsePagina(html) {
         });
       }
     });
-  });
+  }
 
   return { risultati, calendario, classificheCId };
 }
@@ -275,7 +334,7 @@ function mergeData(D, nuovi) {
 
   D.fipavMeta = D.fipavMeta || {};
   D.fipavMeta.ultimoAggiornamento = new Date().toISOString();
-  D.fipavMeta.fonte = FIPAV_URL;
+  D.fipavMeta.fonte = FIPAV_BASE_URL;
 
   return { nuoviRis, nuoviCal, classifiche: nuovi.classifiche.length };
 }
@@ -285,6 +344,14 @@ function mergeData(D, nuovi) {
 async function main() {
   console.log(`🏐 Aggiornamento FIPAV`);
   console.log(`   Pattern cercati: ${PATTERNS_SOCIETA.join(' | ')}`);
+
+  // Trova la stagione corrente
+  const stagione = await trovaStagioneCorrente();
+  if (!stagione) throw new Error('Impossibile trovare la stagione FIPAV');
+  console.log(`   Stagione: ${stagione.nome} (StId=${stagione.id})`);
+
+  // Costruisci URL con filtro società → ottieni TUTTI i match della stagione in una richiesta
+  const FIPAV_URL = `${FIPAV_BASE_URL}&StId=${stagione.id}&SId=${SOCIETA_SID}`;
   console.log(`   Fonte: ${FIPAV_URL}`);
 
   const html = await fetchHTML(FIPAV_URL);
