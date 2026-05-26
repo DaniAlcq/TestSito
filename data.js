@@ -1,6 +1,6 @@
 /* =========================================================
    ASD Volley '96 — DATI DEL SITO
-   Aggiornato automaticamente il 19/05/2026, 09:50:57
+   Aggiornato automaticamente il 26/05/2026, 09:59:42
    ========================================================= */
 
 window.SITE_DATA = {
@@ -520,7 +520,7 @@ window.SITE_DATA = {
     }
   ],
   "fipavMeta": {
-    "ultimoAggiornamento": "2026-05-19T07:50:57.291Z",
+    "ultimoAggiornamento": "2026-05-26T07:59:42.590Z",
     "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?PId=7306"
   }
 };
