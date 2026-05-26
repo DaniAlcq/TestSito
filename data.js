@@ -1,6 +1,6 @@
 /* =========================================================
    ASD Volley '96 — DATI DEL SITO
-   Aggiornato automaticamente il 26/05/2026, 10:11:17
+   Aggiornato automaticamente il 26/05/2026, 10:20:27
    ========================================================= */
 
 window.SITE_DATA = {
@@ -295,6 +295,446 @@ window.SITE_DATA = {
   ],
   "risultati": [
     {
+      "data": "2026-05-09",
+      "ora": "19:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "GIARRATANA VOLLEY",
+      "siglaAvv": "GV",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-05-06",
+      "ora": "18:00",
+      "squadraNostra": "U15",
+      "avversario": "SPORTISOLA&TERRASINI",
+      "siglaAvv": "SP",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-04-26",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "G.S. IL GABBIANO POZZALLO",
+      "siglaAvv": "IG",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-04-18",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "MESSINA VOLLEY",
+      "siglaAvv": "MV",
+      "setNoi": 1,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-04-18",
+      "ora": "17:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "CANTIERI ELEWATT ENTELLO",
+      "siglaAvv": "CE",
+      "setNoi": 3,
+      "setLoro": 2,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-04-11",
+      "ora": "17:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "PIU' FORMAZIONE BARCELLONA",
+      "siglaAvv": "PF",
+      "setNoi": 3,
+      "setLoro": 1,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-04-11",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "PLAY VOLLEY BARCELLONA",
+      "siglaAvv": "PV",
+      "setNoi": 2,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-03-29",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "GIARDINI DEL VOLLEY",
+      "siglaAvv": "GD",
+      "setNoi": 3,
+      "setLoro": 1,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-03-28",
+      "ora": "18:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "ESSEPIAUTO A29",
+      "siglaAvv": "EA",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-03-21",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "NEW AMANDO IONICA VOLLEY",
+      "siglaAvv": "NA",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-03-21",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ENERGY ITALY POL. LIBERTAS PARTANNA",
+      "siglaAvv": "EI",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-03-14",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "ASD ZAFFERANA VOLLEY",
+      "siglaAvv": "ZV",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-03-08",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ASD VOLLEY GIBELLINA 2004",
+      "siglaAvv": "VG",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-03-07",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "POLISPORTIVA NINO ROMANO",
+      "siglaAvv": "IN",
+      "setNoi": 2,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-02-28",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
+      "siglaAvv": "NR",
+      "setNoi": 2,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-02-28",
+      "ora": "19:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ACQUA SABRINELLA",
+      "siglaAvv": "AS",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-02-21",
+      "ora": "19:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "TEAM VOLLEY MESSINA",
+      "siglaAvv": "TV",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-02-21",
+      "ora": "16:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "G.S. PALLAVOLO TERRASINI",
+      "siglaAvv": "PT",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-02-15",
+      "ora": "19:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "ORLANDINAVOLLEY",
+      "siglaAvv": "OR",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-02-14",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "SSD UNIME",
+      "siglaAvv": "SU",
+      "setNoi": 3,
+      "setLoro": 1,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-02-07",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "FUTURA VOLLEY SANTA TERESA DI RIVA",
+      "siglaAvv": "FV",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-02-07",
+      "ora": "18:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "DON ORIONE & CAPACENSE",
+      "siglaAvv": "DO",
+      "setNoi": 1,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-02-01",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "ASD NEW VOLLEY TEAM TORREGROTTA",
+      "siglaAvv": "NV",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-01-31",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "NEW GI.CA. SPORT MONREALE",
+      "siglaAvv": "NG",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-01-28",
+      "ora": "20:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "MESSINA VOLLEY",
+      "siglaAvv": "MV",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-01-24",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "GIARDINI DEL VOLLEY",
+      "siglaAvv": "GD",
+      "setNoi": 2,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-01-17",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "CANTIERI ELEWATT ENTELLO",
+      "siglaAvv": "CE",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-01-13",
+      "ora": "19:45",
+      "squadraNostra": "Serie C F",
+      "avversario": "NEW AMANDO IONICA VOLLEY",
+      "siglaAvv": "NA",
+      "setNoi": 1,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-01-11",
+      "ora": "17:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "PLAY VOLLEY BARCELLONA",
+      "siglaAvv": "PV",
+      "setNoi": 1,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2026-01-10",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "PIU' FORMAZIONE BARCELLONA",
+      "siglaAvv": "PF",
+      "setNoi": 1,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2026-01-08",
+      "ora": "20:30",
+      "squadraNostra": "Serie C F",
+      "avversario": "ASD ZAFFERANA VOLLEY",
+      "siglaAvv": "ZV",
+      "setNoi": 3,
+      "setLoro": 1,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2025-12-21",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ESSEPIAUTO A29",
+      "siglaAvv": "EA",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-12-13",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ENERGY ITALY POL. LIBERTAS PARTANNA",
+      "siglaAvv": "EI",
+      "setNoi": 3,
+      "setLoro": 1,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2025-11-29",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "POLISPORTIVA NINO ROMANO",
+      "siglaAvv": "IN",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-11-29",
+      "ora": "19:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "ASD VOLLEY GIBELLINA 2004",
+      "siglaAvv": "VG",
+      "setNoi": 1,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2025-11-23",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
+      "siglaAvv": "NR",
+      "setNoi": 3,
+      "setLoro": 2,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2025-11-23",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ACQUA SABRINELLA",
+      "siglaAvv": "AS",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-11-15",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "TEAM VOLLEY MESSINA",
+      "siglaAvv": "TV",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-11-15",
+      "ora": "17:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "G.S. PALLAVOLO TERRASINI",
+      "siglaAvv": "PT",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2025-11-09",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "ORLANDINAVOLLEY",
+      "siglaAvv": "OR",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
       "data": "2025-11-09",
       "ora": "18:00",
       "squadraNostra": "Serie C F",
@@ -306,6 +746,28 @@ window.SITE_DATA = {
       "luogo": "in trasferta"
     },
     {
+      "data": "2025-11-08",
+      "ora": "19:30",
+      "squadraNostra": "Serie C F",
+      "avversario": "SSD UNIME",
+      "siglaAvv": "SU",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
+      "data": "2025-11-02",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
+      "avversario": "FUTURA VOLLEY SANTA TERESA DI RIVA",
+      "siglaAvv": "FV",
+      "setNoi": 0,
+      "setLoro": 3,
+      "casa": false,
+      "luogo": "in trasferta"
+    },
+    {
       "data": "2025-11-02",
       "ora": "19:30",
       "squadraNostra": "Serie C M",
@@ -313,6 +775,17 @@ window.SITE_DATA = {
       "avversario": "Catania Volley",
       "setNoi": 3,
       "setLoro": 2,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-11-01",
+      "ora": "18:30",
+      "squadraNostra": "Serie C M",
+      "avversario": "DON ORIONE & CAPACENSE",
+      "siglaAvv": "DO",
+      "setNoi": 0,
+      "setLoro": 3,
       "casa": true,
       "luogo": "Palamilone"
     },
@@ -331,12 +804,34 @@ window.SITE_DATA = {
       "data": "2025-10-26",
       "ora": "18:00",
       "squadraNostra": "Serie C F",
+      "avversario": "ASD NEW VOLLEY TEAM TORREGROTTA",
+      "siglaAvv": "NV",
+      "setNoi": 3,
+      "setLoro": 0,
+      "casa": true,
+      "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-10-26",
+      "ora": "18:00",
+      "squadraNostra": "Serie C F",
       "siglaAvv": "EN",
       "avversario": "Volley Enna",
       "setNoi": 3,
       "setLoro": 0,
       "casa": true,
       "luogo": "Palamilone"
+    },
+    {
+      "data": "2025-10-25",
+      "ora": "18:00",
+      "squadraNostra": "Serie C M",
+      "avversario": "NEW GI.CA. SPORT MONREALE",
+      "siglaAvv": "NG",
+      "setNoi": 3,
+      "setLoro": 1,
+      "casa": false,
+      "luogo": "in trasferta"
     },
     {
       "data": "2025-10-19",
@@ -352,6 +847,296 @@ window.SITE_DATA = {
   ],
   "calendario": [],
   "classifiche": [
+    {
+      "id": "serie-c-maschile-girone-a",
+      "label": "Serie C M",
+      "titolo": "SERIE C MASCHILE - Girone A",
+      "squadre": [
+        {
+          "pos": 1,
+          "nome": "DON ORIONE & CAPACENSE",
+          "g": 53,
+          "v": 20,
+          "p": 17,
+          "sf": 3,
+          "ss": 57,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 2,
+          "nome": "ASD VOLLEY GIBELLINA 2004",
+          "g": 50,
+          "v": 20,
+          "p": 17,
+          "sf": 3,
+          "ss": 52,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 3,
+          "nome": "ADG NDT SOLUTIONS - VOLLEY '96",
+          "g": 45,
+          "v": 20,
+          "p": 15,
+          "sf": 5,
+          "ss": 50,
+          "pt": 0,
+          "forma": "",
+          "noi": true
+        },
+        {
+          "pos": 4,
+          "nome": "PLAY VOLLEY BARCELLONA",
+          "g": 45,
+          "v": 20,
+          "p": 15,
+          "sf": 5,
+          "ss": 50,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 5,
+          "nome": "CANTIERI ELEWATT ENTELLO",
+          "g": 43,
+          "v": 20,
+          "p": 14,
+          "sf": 6,
+          "ss": 47,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 6,
+          "nome": "ESSEPIAUTO A29",
+          "g": 24,
+          "v": 20,
+          "p": 9,
+          "sf": 11,
+          "ss": 33,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 7,
+          "nome": "NEW GI.CA. SPORT MONREALE",
+          "g": 22,
+          "v": 20,
+          "p": 8,
+          "sf": 12,
+          "ss": 30,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 8,
+          "nome": "ACQUA SABRINELLA",
+          "g": 20,
+          "v": 20,
+          "p": 6,
+          "sf": 14,
+          "ss": 25,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 9,
+          "nome": "G.S. PALLAVOLO TERRASINI",
+          "g": 19,
+          "v": 20,
+          "p": 7,
+          "sf": 13,
+          "ss": 28,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 10,
+          "nome": "ENERGY ITALY POL. LIBERTAS PARTANNA",
+          "g": 9,
+          "v": 20,
+          "p": 2,
+          "sf": 18,
+          "ss": 16,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 11,
+          "nome": "ORLANDINAVOLLEY",
+          "g": 0,
+          "v": 20,
+          "p": 0,
+          "sf": 20,
+          "ss": 2,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        }
+      ]
+    },
+    {
+      "id": "serie-c-femminile-girone-b",
+      "label": "Serie C F",
+      "titolo": "SERIE C FEMMINILE - Girone B",
+      "squadre": [
+        {
+          "pos": 1,
+          "nome": "NEW AMANDO IONICA VOLLEY",
+          "g": 60,
+          "v": 22,
+          "p": 19,
+          "sf": 3,
+          "ss": 63,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 2,
+          "nome": "MESSINA VOLLEY",
+          "g": 56,
+          "v": 22,
+          "p": 20,
+          "sf": 2,
+          "ss": 61,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 3,
+          "nome": "FUTURA VOLLEY SANTA TERESA DI RIVA",
+          "g": 56,
+          "v": 22,
+          "p": 18,
+          "sf": 4,
+          "ss": 60,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 4,
+          "nome": "POLISPORTIVA NINO ROMANO",
+          "g": 55,
+          "v": 22,
+          "p": 19,
+          "sf": 3,
+          "ss": 59,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 5,
+          "nome": "FI.MA. FORMAZIONE MILAZZO",
+          "g": 35,
+          "v": 22,
+          "p": 11,
+          "sf": 11,
+          "ss": 42,
+          "pt": 0,
+          "forma": "",
+          "noi": true
+        },
+        {
+          "pos": 6,
+          "nome": "PIU' FORMAZIONE BARCELLONA",
+          "g": 31,
+          "v": 22,
+          "p": 10,
+          "sf": 12,
+          "ss": 38,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 7,
+          "nome": "ASD NEW RANDAZZO VOLLEY 2022",
+          "g": 28,
+          "v": 22,
+          "p": 10,
+          "sf": 12,
+          "ss": 39,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 8,
+          "nome": "ASD ZAFFERANA VOLLEY",
+          "g": 28,
+          "v": 22,
+          "p": 9,
+          "sf": 13,
+          "ss": 33,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 9,
+          "nome": "SSD UNIME",
+          "g": 22,
+          "v": 22,
+          "p": 7,
+          "sf": 15,
+          "ss": 27,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 10,
+          "nome": "GIARDINI DEL VOLLEY",
+          "g": 18,
+          "v": 22,
+          "p": 7,
+          "sf": 15,
+          "ss": 27,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 11,
+          "nome": "ASD NEW VOLLEY TEAM TORREGROTTA",
+          "g": 6,
+          "v": 22,
+          "p": 2,
+          "sf": 20,
+          "ss": 8,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        },
+        {
+          "pos": 12,
+          "nome": "TEAM VOLLEY MESSINA",
+          "g": 1,
+          "v": 22,
+          "p": 0,
+          "sf": 22,
+          "ss": 4,
+          "pt": 0,
+          "forma": "",
+          "noi": false
+        }
+      ]
+    },
     {
       "id": "serie-c-f",
       "label": "Serie C F",
@@ -628,7 +1413,7 @@ window.SITE_DATA = {
     }
   ],
   "fipavMeta": {
-    "ultimoAggiornamento": "2026-05-26T08:11:17.076Z",
+    "ultimoAggiornamento": "2026-05-26T08:20:27.307Z",
     "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?PId=7306"
   }
 };
