@@ -1,108 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#121212">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Calendario — ASD Volley 96</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/style-apple.css">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-35L1FT2V6S');
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calendario e classifiche — ASD Volley '96</title>
+<meta name="description" content="Risultati, prossime partite e classifiche dei campionati FIPAV Sicilia in cui gioca l'ASD Volley '96.">
+<link rel="icon" href="img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
-  <header class="header-tot">
-    <img class="brand-logo" src="img/log.png" alt="Logo">
-
-    <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
-      &#9776;
-    </button>
-
-    <nav id="navbar">
-      <a href="index.html"        data-url="index.html">Home</a>
-      <a href="squadre.html"      data-url="squadre.html">Squadre e Società</a>
-      <a href="calendario.html"   data-url="calendario.html">Calendario e Risultati</a>
-      <a href="classifiche.html"  data-url="classifiche.html">Classifiche</a>
-      <a href="contatti.html"     data-url="contatti.html">Contatti</a>
-    </nav>
-
-    <div class="social-icons">
-      <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-insta" src="img/instagram.png" alt="Instagram">
-      </a>
-      <a href="https://www.facebook.com/asdvolley96" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-facebook" src="img/facebook.png" alt="Facebook">
-      </a>
-      <a href="https://www.youtube.com/@ASD_VOLLEY96" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-youtube" src="img/youtube.png" alt="Youtube">
-      </a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="badge"><img src="img/logo.svg" alt="logo" width="34" height="34"></div>
+      <div class="txt">
+        <span class="t1" data-bind="brandName">ASD Volley '96</span>
+        <span class="t2" data-bind="brandLine">Milazzo · dal 1996</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navbar">
+      <a href="index.html">Home</a>
+      <a href="squadre.html">Squadre</a>
+      <a href="calendario.html">Calendario</a>
+      <a href="societa.html">Società</a>
+      <a href="contatti.html">Contatti</a>
     </div>
-  </header>
-
-  <main>
-    <h1>Calendario Partite</h1>
-
-    <div class="filter-buttons">
-      <button id="btn-femminile" class="filter-btn">Serie C Femminile</button>
-      <button id="btn-maschile"  class="filter-btn">Serie C Maschile</button>
+    <div class="nav-cta">
+      <span class="live"><span class="dot"></span><span data-bind="stagione">Stagione 25/26</span></span>
+      <a href="contatti.html" class="btn btn-primary">Tesseramenti <span class="arr">→</span></a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span></button>
     </div>
+  </div>
+</nav>
 
-    <div class="calendar-wrapper">
-      <table id="calendar-table" class="table rounded">
+<header class="page-head">
+  <div class="wrap">
+    <div class="crumb">Dati FIPAV Sicilia · Aggiornati ogni domenica</div>
+    <h1>Calendario<br><span class="it">e classifiche</span></h1>
+    <p class="sub"><strong>Tutte le partite, tutti i risultati, tutte le classifiche</strong> — direttamente dal portale FIPAV Sicilia. Il pulsante di aggiornamento è nell'admin.</p>
+  </div>
+</header>
+
+<section id="risultati">
+  <div class="wrap">
+    <div class="split">
+      <div class="panel reveal">
+        <div class="panel-head"><span class="t">Ultimi risultati</span><span class="l">Tutti i campionati</span></div>
+        <div id="risultati-list"></div>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-head"><span class="t">Prossime sfide</span><span class="l">Calendario</span></div>
+        <div class="cal" id="cal-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="classifica">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Classifica<br><span class="it">in vetta</span></h2>
+      <div class="meta"><span>FIPAV Sicilia girone unico</span><a href="https://www.fipavsicilia.it/risultati/" target="_blank" rel="noopener">Fonte ufficiale →</a></div>
+    </div>
+    <div class="standings reveal">
+      <div class="standings-head">
+        <span class="t" id="standings-title">Serie C — Femminile</span>
+        <div class="switcher" id="standings-switcher"></div>
+      </div>
+      <table>
         <thead>
-          <tr>
-            <th>G</th>
-            <th>Data</th>
-            <th>Avversario</th>
-            <th>C/T</th>
-            <th>Ris.</th>
-          </tr>
+          <tr><th>#</th><th>Squadra</th><th>G</th><th>V</th><th>P</th><th>SF</th><th>SS</th><th>Forma</th><th>PT</th></tr>
         </thead>
-        <tbody id="calendar-body"></tbody>
+        <tbody id="standings-body"></tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener">
-      <span class="dot"></span> Guarda la diretta
-    </a>
-  </main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="row">
+          <div class="b"><img src="img/logo.svg" alt="logo" width="48" height="48"></div>
+          <h4 data-bind="brandName">ASD Volley '96<span data-bind="brandLine">Milazzo · 1996—2026</span></h4>
+        </div>
+        <p>Associazione Sportiva Dilettantistica affiliata FIPAV. Promuoviamo la pallavolo nel comprensorio di Milazzo dal 1996.</p>
+      </div>
+      <div class="foot-col"><h5>Sede</h5><div class="addr" id="foot-addr"></div></div>
+      <div class="foot-col"><h5>Contatti</h5><ul id="foot-contacts"></ul></div>
+      <div class="foot-col">
+        <h5>Naviga</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="squadre.html">Squadre &amp; atleti</a></li>
+          <li><a href="societa.html">La società</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wordmark">VOLLEY <span class="it">novantasei</span></div>
+    <div class="foot-bottom">
+      <span id="foot-piva">© ASD Volley '96</span>
+      <div class="socials" id="foot-socials"></div>
+      <span>Made with passione a Milazzo · <a href="#admin" style="color:inherit;border-bottom:1px dotted var(--fg-mute);">admin</a></span>
+    </div>
+  </div>
+</footer>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
-    <p>Web design & sviluppo © 2025 <a href="mailto:danilo.lcq@gmail.com">Danilo Alacqua</a></p>
-  </footer>
+<button class="admin-bubble" onclick="window.openAdmin()" title="Pannello admin">⚙</button>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-    });
-  </script>
-
-  <script src="js/menu.js" defer></script>
-  <script src="js/live.js" defer></script>
-  <script src="js/calendario.js" defer></script>
-
-  <script>
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', (e) => {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) e.preventDefault();
-      lastTouchEnd = now;
-    }, { passive: false });
-  </script>
-  <script>document.documentElement.classList.add('ready');</script>
+<script src="data.js"></script>
+<script src="js/render.js" defer></script>
+<script src="js/admin.js" defer></script>
 </body>
 </html>
